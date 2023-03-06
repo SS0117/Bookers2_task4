@@ -1,0 +1,13 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<div>
+  <%= render "userInfo", user: @user %>
+  <%= render "books/new", book: @book %>
+</div>
+
+<div>
+  <h2>Books</h2>
+  <%= render "books/list", books: @user.books %>
+</div>
