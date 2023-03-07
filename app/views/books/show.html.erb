@@ -40,34 +40,35 @@
         </tbody>
 
     </table>
-    </div>
-
-    <ul class="list-unstyled">
+    <ul>
        <% @book_dil.book_comments.each do |comment| %>
-          <li class="media">
+          <oi>
             <%= image_tag comment.user.get_profile_image(64,64) %>
-              <div class="media-body ml-2">
-                <h5 class="mt-0 mb-1">
+              <div>
+                <h5>
                   <%= link_to comment.user.name, user_path(comment.user.id) %>
+                  <%= comment.comment %>
+
                     <% if current_user == comment.user %>
-                        <%= link_to "Destroy", book_book_comment_path(comment.book.id, comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+                        <%= link_to "Destroy", book_book_comment_path(comment.book.id, comment.id), method: :delete %>
                     <% end %>
                 </h5>
-                <%= comment.comment %>
               </div>
-          </li>
+          </oi>
       <% end %>
     </ul>
-
-  </div>
-</div>
-
-
-<%= form_with model: [@book_dil, @book_comment] do |f| %>
+    <%= form_with model: [@book_dil, @book_comment] do |f| %>
   <div class="form-group">
     <%= f.text_area :comment, class: "form-control" %>
   </div>
   <%= f.submit "送信", class: "btn btn-primary" %>
 <% end %>
+    </div>
+
+
+
+  </div>
+</div>
+
 
 
